@@ -2,20 +2,20 @@
 
 This project predicts the direction of the next candle's closing price using historical NIFTY intraday data and machine learning models.
 
-## 🎯 Objective
+## Objective
 
 - Build ML models to predict if the next candle's close will be higher (1) or lower (0)
 - Compare multiple models (Logistic Regression, Random Forest, XGBoost)
 - Generate trading signals and calculate cumulative PnL
 - Evaluate model performance using accuracy, precision, recall, and F1 score
 
-## 📊 Dataset
+## Dataset
 
 - **Source**: 1 year of NIFTY intraday OHLC data
 - **Expected Columns**: `Timestamp`, `Open`, `High`, `Low`, `Close`, `Volume` (optional)
 - **Location**: Place your CSV file in `data/raw/nifty_intraday.csv`
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### 1. Clone or Download the Project
 
@@ -51,7 +51,7 @@ Place your NIFTY intraday CSV file in the `data/raw/` folder with the name `nift
 - `Close` - Closing price
 - `Volume` - Trading volume (optional)
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 NIFTY_MODEL/
@@ -89,7 +89,7 @@ NIFTY_MODEL/
 └── README.md
 ```
 
-## 🏃 Running the Project
+## Running the Project
 
 ### Option 1: Run the Complete Pipeline
 
@@ -100,16 +100,16 @@ python main.py
 ```
 
 This will:
-1. ✅ Load and preprocess data
-2. ✅ Create target variable (1 if next close > current close, else 0)
-3. ✅ Engineer 70+ technical features
-4. ✅ Split data chronologically (70% train, 30% test)
-5. ✅ Train 3 ML models (Logistic Regression, Random Forest, XGBoost)
-6. ✅ Evaluate and compare models
-7. ✅ Select best model
-8. ✅ Generate trading signals
-9. ✅ Calculate cumulative PnL
-10. ✅ Save results and visualizations
+1. Load and preprocess data
+2. Create target variable (1 if next close > current close, else 0)
+3. Engineer 70+ technical features
+4. Split data chronologically (70% train, 30% test)
+5. Train 3 ML models (Logistic Regression, Random Forest, XGBoost)
+6. Evaluate and compare models
+7. Select best model
+8. Generate trading signals
+9. Calculate cumulative PnL
+10. Save results and visualizations
 
 ### Option 2: Use Jupyter Notebooks
 
@@ -124,7 +124,7 @@ Then open:
 - `02_feature_engineering.ipynb` - Feature Engineering
 - `03_model_experiments.ipynb` - Model Training and Experiments
 
-## 📊 Features Generated
+## Features Generated
 
 ### Technical Indicators (20+)
 - **Momentum**: RSI, MACD, Stochastic Oscillator
@@ -157,13 +157,13 @@ Then open:
 
 **Total: 70+ Features**
 
-## 🤖 Models Used
+## Models Used
 
 1. **Logistic Regression** - Baseline linear model
 2. **Random Forest** - Ensemble tree-based model
 3. **XGBoost** - Gradient boosting (typically best performer)
 
-## 📈 Evaluation Metrics
+## Evaluation Metrics
 
 - **Accuracy** - Overall correctness
 - **Precision** - Accuracy of positive predictions
@@ -173,7 +173,7 @@ Then open:
 - **ROC Curve & AUC** - Model discrimination ability
 - **Feature Importance** - Most influential features
 
-## 💰 PnL Calculation Strategy
+## PnL Calculation Strategy
 
 **Trading Logic:**
 - **Buy Signal (Prediction = 1)**: Take long position at current close, exit at next close
@@ -187,7 +187,7 @@ Then open:
 - Average win/loss
 - Maximum drawdown
 
-## 📤 Output Files
+## Output Files
 
 After running `main.py`, you'll get:
 
@@ -219,7 +219,7 @@ All trained models saved in `models/` folder:
 - `xgboost.pkl`
 - `scaler.pkl`
 
-## 🔧 Customization
+## Customization
 
 ### Change Train-Test Split Ratio
 
@@ -271,30 +271,30 @@ X_new_scaled = scaler.transform(X_new)
 predictions = model.predict(X_new_scaled)
 ```
 
-## ⚠️ Important Notes
+## Important Notes
 
 1. **Time-Series Split**: The data is split chronologically (no shuffling) to prevent look-ahead bias
 2. **Feature Engineering**: NaN rows are dropped after indicator calculation (~20-50 rows)
 3. **Scaling**: Always scale test data using the scaler fitted on training data only
 4. **Target Variable**: Last row is dropped (no next candle to predict)
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Missing Data File
 ```
-❌ ERROR: Data file not found at data/raw/nifty_intraday.csv
+ERROR: Data file not found at data/raw/nifty_intraday.csv
 ```
 **Solution**: Place your CSV file in `data/raw/` folder with correct name.
 
 ### Missing Columns
 ```
-❌ ERROR: Required columns not found
+ERROR: Required columns not found
 ```
 **Solution**: Ensure CSV has: Timestamp, Open, High, Low, Close
 
 ### Import Errors
 ```
-❌ ERROR: No module named 'pandas_ta'
+ ERROR: No module named 'pandas_ta'
 ```
 **Solution**: Install dependencies: `pip install -r requirements.txt`
 
@@ -304,7 +304,7 @@ If dataset is very large, reduce features or use sampling:
 df = df.sample(frac=0.5, random_state=42)  # Use 50% of data
 ```
 
-## 📚 Dependencies
+## Dependencies
 
 - pandas 2.0.3
 - numpy 1.24.3
@@ -316,7 +316,7 @@ df = df.sample(frac=0.5, random_state=42)  # Use 50% of data
 - joblib 1.3.1
 - ta 0.11.0
 
-## 📊 Performance Tips
+## Performance Tips
 
 1. **More data is better** - At least 6 months recommended
 2. **Feature selection** - Remove low-importance features for faster training
@@ -324,7 +324,7 @@ df = df.sample(frac=0.5, random_state=42)  # Use 50% of data
 4. **Ensemble methods** - Combine predictions from multiple models
 5. **Cross-validation** - Use time-series cross-validation for robust evaluation
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to:
 - Add more technical indicators
@@ -332,23 +332,22 @@ Feel free to:
 - Enhance PnL calculation with transaction costs
 - Add risk management features (stop-loss, position sizing)
 
-## 📄 License
+## License
 
 This project is for educational purposes. Use at your own risk. Not financial advice.
 
-## 🎓 Learning Resources
+## Learning Resources
 
 - [Scikit-learn Documentation](https://scikit-learn.org/)
 - [XGBoost Documentation](https://xgboost.readthedocs.io/)
 - [pandas-ta Documentation](https://github.com/twopirllc/pandas-ta)
 - [Technical Analysis Library](https://technical-analysis-library-in-python.readthedocs.io/)
 
-## 📧 Contact
+## Contact
 
 For questions or issues, please open an issue in the repository.
 
 ---
 
-**Happy Trading! 🚀📈**
 
 *Remember: Past performance does not guarantee future results. Always practice proper risk management.*
